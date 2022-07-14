@@ -47,26 +47,19 @@ Span::size_type Span::shortestSpan() const
     }
     bool first = true;
     Span::size_type r;
-    for (Span::container_type::iterator it = this->c.begin(); it != this->c.end(); it++)
+    Span::container_type::iterator it = this->c.begin();
+    while (it != this->c.end())
     {
-        Span::value_type a = *it;
+        Span::size_type a = *it;
         if (++it == this->c.end())
         {
             break;
         }
-        Span::value_type b = *it;
-        Span::size_type d;
-        if (a < b)
+        Span::size_type b = *it;
+        Span::size_type distance = b - a;
+        if (first || distance < r)
         {
-            d = b - a;
-        }
-        else
-        {
-            d = a - b;
-        }
-        if (first || d < r)
-        {
-            r = d;
+            r = distance;
             first = false;
         }
     }
