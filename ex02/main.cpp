@@ -4,6 +4,41 @@
 #include "MutantStack.hpp"
 #include <iostream>
 
+int ft_main(MutantStack<int> mstack)
+{
+    std::cout << "[Test]" << std::endl;
+    for (MutantStack<int>::iterator it = mstack.begin(); it != mstack.end(); it++)
+    {
+        std::cout << *it << std::endl;
+    }
+    std::cout << std::endl;
+
+    std::cout << "[Test Reverse]" << std::endl;
+    for (MutantStack<int>::reverse_iterator it = mstack.rbegin(); it != mstack.rend(); it++)
+    {
+        std::cout << *it << std::endl;
+    }
+    std::cout << std::endl;
+
+    const MutantStack<int>& cmstack = mstack;
+
+    std::cout << "[Test Const]" << std::endl;
+    for (MutantStack<int>::const_iterator it = cmstack.begin(); it != cmstack.end(); it++)
+    {
+        std::cout << *it << std::endl;
+    }
+    std::cout << std::endl;
+
+    std::cout << "[Test Const Reverse]" << std::endl;
+    for (MutantStack<int>::const_reverse_iterator it = cmstack.rbegin(); it != cmstack.rend(); it++)
+    {
+        std::cout << *it << std::endl;
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+
 int main()
 {
     MutantStack<int> mstack;
@@ -34,5 +69,5 @@ int main()
         ++it;
     }
     std::stack<int> s(mstack);
-    return 0;
+    return ft_main(mstack);
 }

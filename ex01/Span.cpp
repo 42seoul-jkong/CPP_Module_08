@@ -67,6 +67,7 @@ Span::value_type Span::shortestSpan() const
         if (first || d < r)
         {
             r = d;
+            first = false;
         }
     }
     return r;

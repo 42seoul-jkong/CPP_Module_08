@@ -10,7 +10,7 @@ class Span
 {
 public:
     typedef unsigned int size_type;
-    typedef unsigned int value_type;
+    typedef int value_type;
     typedef std::multiset<value_type> container_type;
 
 private:
