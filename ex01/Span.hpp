@@ -25,8 +25,8 @@ public:
     void addNumber(value_type n);
     template <typename InputIterator>
     void addNumber(InputIterator first, InputIterator last);
-    value_type shortestSpan() const;
-    value_type longestSpan() const;
+    size_type shortestSpan() const;
+    size_type longestSpan() const;
 };
 
 class InvalidSizeException : public std::exception

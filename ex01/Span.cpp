@@ -39,14 +39,14 @@ void Span::addNumber(Span::value_type n)
     this->c.insert(n);
 }
 
-Span::value_type Span::shortestSpan() const
+Span::size_type Span::shortestSpan() const
 {
     if (this->c.size() < 2)
     {
         throw InvalidSizeException();
     }
     bool first = true;
-    Span::value_type r = Span::value_type();
+    Span::size_type r;
     for (Span::container_type::iterator it = this->c.begin(); it != this->c.end(); it++)
     {
         Span::value_type a = *it;
@@ -55,7 +55,7 @@ Span::value_type Span::shortestSpan() const
             break;
         }
         Span::value_type b = *it;
-        Span::value_type d;
+        Span::size_type d;
         if (a < b)
         {
             d = b - a;
@@ -73,13 +73,15 @@ Span::value_type Span::shortestSpan() const
     return r;
 }
 
-Span::value_type Span::longestSpan() const
+Span::size_type Span::longestSpan() const
 {
     if (this->c.size() < 2)
     {
         throw InvalidSizeException();
     }
-    return *this->c.rbegin() - *this->c.begin();
+    Span::size_type max = *this->c.rbegin();
+    Span::size_type min = *this->c.begin();
+    return max - min;
 }
 
 InvalidSizeException::~InvalidSizeException() throw() {} // = default
